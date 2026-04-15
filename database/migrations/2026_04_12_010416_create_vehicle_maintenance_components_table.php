@@ -17,7 +17,10 @@ return new class extends Migration
             $table->foreignId('vehicle_component_id')->constrained('vehicle_components')->cascadeOnDelete();
             $table->timestamps();
 
-            $table->unique(['vehicle_maintenance_id', 'vehicle_component_id']);
+            $table->unique(
+                ['vehicle_maintenance_id', 'vehicle_component_id'],
+                'vmc_maintenance_component_unique'
+            );
         });
     }
 
