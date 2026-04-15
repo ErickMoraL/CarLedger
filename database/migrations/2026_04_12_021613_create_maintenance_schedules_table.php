@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('maintenance_schedules', function (Blueprint $table) {
+        Schema::create('vehicle_maintenance_schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('maintenance_type_id')->constrained()->restrictOnDelete();
-            $table->date('expected_date');
-            $table->integer('expected_kilometers')->nullable();
-            $table->date('completed_at')->nullable();
+            $table->foreignId('vehicle_maintenance_type_id')->constrained('vehicle_maintenance_types')->restrictOnDelete();
+            $table->foreignId('vehicle_component_id')->nullable()->constrained()->nullOnDelete();
+            $table->date('expected_date')->nullable();
+            $table->unsignedInteger('expected_kilometers')->nullable();
+            $table->date('completed_date')->nullable();
             $table->foreignId('completed_odometer_log_id')->nullable()->constrained('vehicle_odometer_logs')->nullOnDelete();
-            $table->string('status')->default('pending'); // pending, completed, skipped,overdue
+            $table->string('status')->default('pending'); // pending, completed, skipped, overdue
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('maintenance_schedules');
+        Schema::dropIfExists('vehicle_maintenance_schedules');
     }
 };

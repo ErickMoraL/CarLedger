@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\MaintenanceSchedule;
+use App\Models\VehicleMaintenanceType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<MaintenanceSchedule>
+ * @extends Factory<VehicleMaintenanceType>
  */
-class MaintenanceScheduleFactory extends Factory
+class VehicleMaintenanceTypeFactory extends Factory
 {
     /**
      * Define the model's default state.

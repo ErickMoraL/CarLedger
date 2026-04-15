@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('type')->nullable(); // e.g., tire, battery, brake pad, etc.
-            $table->date('installed_at')->nullable();
+            $table->date('installed_date')->nullable();
             $table->foreignId('installed_odometer_log_id')->nullable()
                 ->constrained('vehicle_odometer_logs')
                 ->nullOnDelete();
-            $table->date('removed_at')->nullable();
+            $table->date('removed_date')->nullable();
             $table->foreignId('removed_odometer_log_id')->nullable()
                 ->constrained('vehicle_odometer_logs')
                 ->nullOnDelete();

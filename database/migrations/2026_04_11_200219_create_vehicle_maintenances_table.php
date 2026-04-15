@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('vehicle_maintenances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('maintenance_type_id')->constrained()->restrictOnDelete();
-
+            $table->foreignId('vehicle_maintenance_type_id')->constrained('vehicle_maintenance_types')->restrictOnDelete();
             $table->date('service_date');
             $table->foreignId('odometer_log_id')->nullable()->constrained('vehicle_odometer_logs')->nullOnDelete();
             $table->decimal('cost', 10, 2)->default(0);
-
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->text('notes')->nullable();
             $table->string('type')->default('preventive'); // preventive, corrective, etc.
 

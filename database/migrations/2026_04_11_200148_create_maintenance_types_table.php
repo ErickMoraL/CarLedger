@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicle_income_plans', function (Blueprint $table) {
+        Schema::create('vehicle_maintenance_types', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
-            $table->decimal('amount', 10, 2);
-            $table->date('start_date')->default(now());
-            $table->date('end_date')->nullable();
-            $table->string('status', 10)->default('active');// e.g., active, paused, completed
-            $table->string('frequency')->default('daily');// e.g., daily, weekly, monthly
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('interval_type', 10)->default('km'); // km, time, or usage
+            $table->unsignedInteger('default_interval')->nullable();
             $table->timestamps();
+
+            $table->unique(['vehicle_id', 'name']);
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vehicle_income_plans');
+        Schema::dropIfExists('vehicle_maintenance_types');
     }
 };

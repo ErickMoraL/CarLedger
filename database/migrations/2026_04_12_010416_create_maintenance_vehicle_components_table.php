@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('maintenance_vehicle_components', function (Blueprint $table) {
+        Schema::create('vehicle_maintenance_components', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('maintenance_id')->constrained('vehicle_maintenances')->cascadeOnDelete();
-            $table->foreignId('component_id')->constrained('vehicle_components')->cascadeOnDelete();            
+            $table->foreignId('vehicle_maintenance_id')->constrained('vehicle_maintenances')->cascadeOnDelete();
+            $table->foreignId('vehicle_component_id')->constrained('vehicle_components')->cascadeOnDelete();
             $table->timestamps();
+
+            $table->unique(['vehicle_maintenance_id', 'vehicle_component_id']);
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('maintenance_vehicle_components');
+        Schema::dropIfExists('vehicle_maintenance_components');
     }
 };

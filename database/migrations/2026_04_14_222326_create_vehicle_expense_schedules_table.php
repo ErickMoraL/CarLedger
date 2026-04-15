@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicle_expenses', function (Blueprint $table) {
+        Schema::create('vehicle_expense_schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
             $table->decimal('amount', 10, 2);
-            $table->date('expense_date');
             $table->string('category')->nullable(); // e.g., fuel, maintenance, insurance
             $table->text('description')->nullable();
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
+            $table->string('status', 20)->default('active'); // e.g., active, paused, completed
+            $table->string('frequency_type')->default('daily'); // e.g., daily, weekly, monthly, unique, etc.
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vehicle_expenses');
+        Schema::dropIfExists('vehicle_expense_schedules');
     }
 };

@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class MaintenanceVehicleComponentSeeder extends Seeder
+class VehicleMaintenanceTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MaintenanceVehicleComponent extends Model
+class VehicleExpenseSchedule extends Model
 {
-    /** @use HasFactory<\Database\Factories\MaintenanceVehicleComponentFactory> */
+    /** @use HasFactory<\Database\Factories\VehicleExpenseScheduleFactory> */
     use HasFactory;
 }
