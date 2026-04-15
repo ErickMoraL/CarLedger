@@ -64,7 +64,7 @@ jobs:
           echo "DB_DATABASE=$(pwd)/database/testing.sqlite" >> .env
 
       - name: Run Migrations
-        run: php artisan migrate --force
+        run: php artisan migrate --env=testing
 
       - name: Build Assets
         run: npm run build
