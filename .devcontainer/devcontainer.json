@@ -1,0 +1,23 @@
+{
+    "name": "CarLedger",
+    "dockerComposeFile": "../compose.yaml",
+    "service": "laravel.test",
+    "workspaceFolder": "/var/www/html",
+    "shutdownAction": "none",
+    "forwardPorts": [80, 5173],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bmewburn.vscode-intelephense-client",
+                "laravel.vscode-laravel",
+                "shufo.vscode-blade-formatter",
+                "onecentlin.laravel-blade",
+                "bradlc.vscode-tailwindcss",
+                "esbenp.prettier-vscode",
+                "usernamehw.errorlens",
+                "github.vscode-github-actions",
+                "mhutchie.git-graph"
+            ]
+        }
+    }
+}
