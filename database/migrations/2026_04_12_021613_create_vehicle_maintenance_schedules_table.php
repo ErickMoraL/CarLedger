@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('vehicle_maintenance_schedules', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('vehicle_id');
-            $table->unsignedBigInteger('vehicle_maintenance_type_id');
-            $table->unsignedBigInteger('vehicle_component_id')->nullable();
+            $table->foreignId('vehicle_id');
+            $table->foreignId('vehicle_maintenance_type_id');
+            $table->foreignId('vehicle_component_id')->nullable();
+            $table->foreignId('vehicle_maintenance_id')->nullable();
+
             $table->date('expected_date')->nullable();
             $table->unsignedInteger('expected_kilometers')->nullable();
-            $table->date('completed_date')->nullable();
-            $table->unsignedBigInteger('completed_odometer_log_id')->nullable();
-            $table->string('status')->default('pending'); // pending, completed, skipped, overdue
+            $table->string('status', 20)->default('pending');
+            $table->text('notes')->nullable();
             $table->timestamps();
 
             $table->foreign('vehicle_id', 'vms_vehicle_fk')
@@ -29,7 +30,7 @@ return new class extends Migration
                 ->on('vehicles')
                 ->cascadeOnDelete();
 
-            $table->foreign('vehicle_maintenance_type_id', 'vms_maintenance_type_fk')
+            $table->foreign('vehicle_maintenance_type_id', 'vms_type_fk')
                 ->references('id')
                 ->on('vehicle_maintenance_types')
                 ->restrictOnDelete();
@@ -39,9 +40,9 @@ return new class extends Migration
                 ->on('vehicle_components')
                 ->nullOnDelete();
 
-            $table->foreign('completed_odometer_log_id', 'vms_odometer_log_fk')
+            $table->foreign('vehicle_maintenance_id', 'vms_maintenance_fk')
                 ->references('id')
-                ->on('vehicle_odometer_logs')
+                ->on('vehicle_maintenances')
                 ->nullOnDelete();
         });
     }
