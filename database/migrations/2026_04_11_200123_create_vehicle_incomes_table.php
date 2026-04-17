@@ -17,8 +17,8 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
 
             $table->date('received_date'); // when the income was received
-            $table->date('period_start')->nullable(); // from which date the income starts to be valid 
-            $table->date('period_end')->nullable();   // until which date the income is valid 
+            $table->date('period_start'); // from which date the income starts to be valid
+            $table->date('period_end');   // until which date the income is valid
 
             $table->text('notes')->nullable();
             $table->timestamps();

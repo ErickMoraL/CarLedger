@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\VehicleStatusEnum;
+use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,7 +20,14 @@ class VehicleFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => User::factory(),
+            'serial_number' => fake()->unique()->bothify('SN-########'),
+            'license_plate' => fake()->unique()->bothify('??-####-??'),
+            'model' => fake()->word(),
+            'manufacturer' => fake()->company(),
+            'year' => fake()->numberBetween(1990, date('Y')),
+            'color' => fake()->safeColorName(),
+            'status' => fake()->randomElement(VehicleStatusEnum::cases()),
         ];
     }
 }
