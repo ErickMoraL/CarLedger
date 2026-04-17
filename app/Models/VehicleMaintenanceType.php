@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\VehicleMaintenanceIntervalTypeEnum;
 use Database\Factories\VehicleMaintenanceTypeFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +24,7 @@ class VehicleMaintenanceType extends Model
 
     protected $casts = [
         'default_interval' => 'integer',
+        'interval_type' => VehicleMaintenanceIntervalTypeEnum::class,
     ];
 
     public function vehicle(): BelongsTo

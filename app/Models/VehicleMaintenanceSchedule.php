@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\VehicleMaintenanceScheduleStatusEnum;
 use Database\Factories\VehicleMaintenanceScheduleFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,7 @@ class VehicleMaintenanceSchedule extends Model
     protected $casts = [
         'expected_date' => 'date',
         'expected_kilometers' => 'integer',
+        'status' => VehicleMaintenanceScheduleStatusEnum::class,
     ];
 
     public function vehicle(): BelongsTo

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->decimal('cost', 10, 2)->default(0);
             $table->text('description')->nullable();
             $table->text('notes')->nullable();
-            $table->string('type')->default('preventive'); // preventive, corrective, etc.
 
             $table->timestamps();
         });

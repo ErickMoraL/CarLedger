@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->string('status', 20)->default('active'); // e.g., active, paused, completed
-            $table->string('frequency_type')->default('daily'); // e.g., daily, weekly, monthly
+            $table->string('status', 20)->default('active'); // enum
+            $table->string('frequency_type')->default('daily'); //  enum
             $table->timestamps();
         });
     }

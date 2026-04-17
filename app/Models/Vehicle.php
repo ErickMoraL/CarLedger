@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\VehicleStatusEnum;
 use Database\Factories\VehicleFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,7 @@ class Vehicle extends Model
 
     protected $casts = [
         'year' => 'integer',
+        'status' => VehicleStatusEnum::class,
     ];
 
     public function user(): BelongsTo
@@ -71,5 +73,10 @@ class Vehicle extends Model
     public function maintenance_schedules(): HasMany
     {
         return $this->hasMany(VehicleMaintenanceSchedule::class, 'vehicle_id');
+    }
+
+    public function expense_schedules(): HasMany
+    {
+        return $this->hasMany(VehicleExpenseSchedule::class, 'vehicle_id');
     }
 }

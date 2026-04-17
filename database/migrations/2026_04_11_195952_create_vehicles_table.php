@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('manufacturer');
             $table->year('year');
             $table->string('color');
-            $table->string('status')->default('active');
+            $table->string('status')->default('active'); // enum
             $table->timestamps();
         });
     }

@@ -22,7 +22,6 @@ class VehicleMaintenance extends Model
         'cost',
         'description',
         'notes',
-        'type',
     ];
 
     protected $casts = [

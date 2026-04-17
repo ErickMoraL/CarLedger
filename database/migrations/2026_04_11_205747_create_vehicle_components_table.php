@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('vehicle_components', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete(); // categories table for component categorization
             $table->string('name');
-            $table->string('type')->nullable(); // e.g., tire, battery, brake pad, etc.
             $table->date('installed_date')->nullable();
             $table->foreignId('installed_odometer_log_id')->nullable()
                 ->constrained('vehicle_odometer_logs')

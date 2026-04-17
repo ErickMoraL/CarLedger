@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('vehicle_expenses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete(); // categories table for expense categorization
             $table->decimal('amount', 10, 2);
             $table->date('expense_date');
-            $table->string('category')->nullable(); // e.g., fuel, maintenance, insurance
             $table->text('description')->nullable();
             $table->timestamps();
         });

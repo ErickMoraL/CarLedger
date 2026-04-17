@@ -21,7 +21,7 @@ return new class extends Migration
 
             $table->date('expected_date')->nullable();
             $table->unsignedInteger('expected_kilometers')->nullable();
-            $table->string('status', 20)->default('pending');
+            $table->string('status', 20)->default('pending'); // enum
             $table->text('notes')->nullable();
             $table->timestamps();
 

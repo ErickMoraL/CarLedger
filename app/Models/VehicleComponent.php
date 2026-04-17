@@ -16,8 +16,8 @@ class VehicleComponent extends Model
 
     protected $fillable = [
         'vehicle_id',
+        'category_id',
         'name',
-        'type',
         'installed_date',
         'installed_odometer_log_id',
         'removed_date',
@@ -33,6 +33,11 @@ class VehicleComponent extends Model
     public function vehicle(): BelongsTo
     {
         return $this->belongsTo(Vehicle::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function installedOdometerLog(): BelongsTo

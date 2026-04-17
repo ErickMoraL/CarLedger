@@ -14,9 +14,9 @@ class VehicleExpense extends Model
 
     protected $fillable = [
         'vehicle_id',
+        'category_id',
         'amount',
         'expense_date',
-        'category',
         'description',
     ];
 
@@ -28,5 +28,10 @@ class VehicleExpense extends Model
     public function vehicle(): BelongsTo
     {
         return $this->belongsTo(Vehicle::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

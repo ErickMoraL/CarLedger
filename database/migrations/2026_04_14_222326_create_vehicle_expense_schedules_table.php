@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('vehicle_expense_schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete(); // categories table for expense categorization
             $table->decimal('amount', 10, 2);
-            $table->string('category')->nullable(); // e.g., fuel, maintenance, insurance
             $table->text('description')->nullable();
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->string('status', 20)->default('active'); // e.g., active, paused, completed
-            $table->string('frequency_type')->default('daily'); // e.g., daily, weekly, monthly, unique, etc.
+            $table->string('status', 20)->default('active'); // enum
+            $table->string('frequency_type')->default('daily'); //  enum
             $table->timestamps();
         });
     }

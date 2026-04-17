@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\VehicleIncomeScheduleFrequencyTypeEnum;
+use App\Enums\VehicleIncomeScheduleStatusEnum;
 use Database\Factories\VehicleIncomeScheduleFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +28,8 @@ class VehicleIncomeSchedule extends Model
         'amount' => 'decimal:2',
         'start_date' => 'date',
         'end_date' => 'date',
+        'status' => VehicleIncomeScheduleStatusEnum::class,
+        'frequency_type' => VehicleIncomeScheduleFrequencyTypeEnum::class,
     ];
 
     public function vehicle(): BelongsTo

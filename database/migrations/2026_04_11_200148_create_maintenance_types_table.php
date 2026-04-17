@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('vehicle_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('interval_type', 10)->default('km'); // km, time, or usage
+            $table->string('interval_type', 10)->default('km'); // enum
             $table->unsignedInteger('default_interval')->nullable();
             $table->timestamps();
 
