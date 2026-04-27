@@ -3,6 +3,7 @@
     "dockerComposeFile": "../compose.yaml",
     "service": "laravel.test",
     "workspaceFolder": "/var/www/html",
+    "remoteUser": "sail",
     "shutdownAction": "none",
     "forwardPorts": [80, 5173],
     "customizations": {
