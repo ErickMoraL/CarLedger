@@ -18,12 +18,24 @@ class VehicleIncomeFactory extends Factory
      */
     public function definition(): array
     {
+        $receivedDate = $this->faker->dateTimeBetween('-1 year', 'now');
+
+        $periodStart = $this->faker->dateTimeBetween(
+            (clone $receivedDate)->modify('-1 month'),
+            $receivedDate
+        );
+
+        $periodEnd = $this->faker->dateTimeBetween(
+            $periodStart,
+            $receivedDate
+        );
+
         return [
             'vehicle_id' => Vehicle::factory(),
-            'amount' => $this->faker->randomFloat(2, 100, 10000),
-            'received_date' => $this->faker->date(),
-            'period_start' => $this->faker->date(),
-            'period_end' => $this->faker->date(),
+            'amount' => $this->faker->randomFloat(2, 100, 1000),
+            'received_date' => $receivedDate->format('Y-m-d'),
+            'period_start' => $periodStart->format('Y-m-d'),
+            'period_end' => $periodEnd->format('Y-m-d'),
             'notes' => $this->faker->sentence(),
         ];
     }

@@ -23,7 +23,7 @@ class VehicleExpenseFactory extends Factory
             'vehicle_id' => Vehicle::factory(),
             'category_id' => Category::factory(),
             'amount' => fake()->randomFloat(2, 10, 1000),
-            'expense_date' => fake()->dateTimeBetween('-2 years', 'now')->format('Y-m-d'),
+            'expense_date' => fake()->dateTimeBetween('-2 years', 'now')?->format('Y-m-d'),
             'description' => fake()->optional()->sentence(),
         ];
     }

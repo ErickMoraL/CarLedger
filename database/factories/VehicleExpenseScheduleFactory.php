@@ -26,8 +26,8 @@ class VehicleExpenseScheduleFactory extends Factory
             'category_id' => Category::factory(),
             'amount' => fake()->randomFloat(2, 10, 1000),
             'description' => fake()->optional()->sentence(),
-            'start_date' => fake()->dateTimeBetween('-1 year', 'now')->format('Y-m-d'),
-            'end_date' => fake()->optional()->dateTimeBetween('now', '+1 year')->format('Y-m-d'),
+            'start_date' => fake()->dateTimeBetween('-1 year', 'now')?->format('Y-m-d'),
+            'end_date' => fake()->optional()->dateTimeBetween('now', '+1 year')?->format('Y-m-d'),
             'status' => fake()->randomElement(VehicleExpenseScheduleStatusEnum::cases()),
             'frequency_type' => fake()->randomElement(VehicleExpenseScheduleFrequencyTypeEnum::cases()),
         ];

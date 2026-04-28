@@ -21,10 +21,10 @@ class VehicleMaintenanceTypeFactory extends Factory
     {
         return [
             'vehicle_id' => Vehicle::factory(),
-            'name' => $this->faker->word(),
+            'name' => $this->faker->unique()->word(),
             'description' => $this->faker->sentence(),
             'interval_type' => $this->faker->randomElement(VehicleMaintenanceIntervalTypeEnum::cases()),
-            'default_interval' => $this->faker->optional()->numberBetween(1, 5000),
+            'default_interval' => $this->faker->optional()->numberBetween(1, 10),
         ];
     }
 }

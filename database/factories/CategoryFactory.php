@@ -22,9 +22,7 @@ class CategoryFactory extends Factory
         return [
             'user_id' => User::factory(),
             'context' => fake()->randomElement(CategoryContextEnum::cases()),
-            'name' => fake()->word(),
-            'slug' => fake()->unique()->slug(),
-
+            'name' => fake()->unique()->sentence(3),
         ];
     }
 }
